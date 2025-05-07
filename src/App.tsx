@@ -1,8 +1,10 @@
+import Navbar from "./components/Navbar"
+
 
 const App = () => {
   return (
-    <div>
-      Crypto Track web App
+    <div className="app">
+      <Navbar />
     </div>
   )
 }
