@@ -1,8 +1,8 @@
 import "./Navbar.css";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { useContext } from "react";
-import { CoinContext } from "../contexts/CoinContext";
 import { MdArrowOutward } from "react-icons/md";
+import { CoinContext } from "../../contexts/CoinContext";
 const Navbar = () => {
 
     const { setCurrency } = useContext(CoinContext);
