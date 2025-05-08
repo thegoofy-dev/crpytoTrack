@@ -1,0 +1,120 @@
+/* Pricing.css */
+.pricing-container {
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(#0b004e, #1d152f, #002834);
+  min-height: 100vh;
+  color: white;
+}
+
+.pricing-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: rgb(126, 113, 209);
+}
+
+.pricing-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #888;
+}
+
+.pricing-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.pricing-card {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+  border: 1px solid #333;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+.pricing-card.highlighted {
+  background: linear-gradient(135deg, #0d024c, #3a2b8c);
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.price {
+  margin: 2rem 0;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.currency {
+  font-size: 1.5rem;
+  vertical-align: super;
+}
+
+.period {
+  font-size: 1rem;
+  color: #888;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.features-list li {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.features-list li::before {
+  content: "✔";
+  color: #6a5bff;
+  position: absolute;
+  left: 0;
+}
+
+.plan-button {
+  background-color: #3a2b8c;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.plan-button:hover {
+  background-color: #2b1b8c;
+}
+
+.highlighted-btn {
+  background-color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(126, 113, 209);
+}
+
+.highlighted-btn:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .pricing-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card.highlighted {
+    transform: scale(1);
+  }
+}

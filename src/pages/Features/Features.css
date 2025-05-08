@@ -1,7 +1,7 @@
 .features {
     padding: 40px 20px;
     font-family: "Arial", sans-serif;
-    background: linear-gradient(135deg, #0D024C, #6a4ca8); /* Darker purplish gradient */
+    background: linear-gradient(#0b004e, #1d152f, #002834);
     color: #fff; /* Adjust text color for better contrast */
     min-height: 100vh; /* Ensure the page takes up the full viewport height */
 }

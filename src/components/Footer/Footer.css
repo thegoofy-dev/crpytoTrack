@@ -1,25 +1,8 @@
-.footer {
-    padding: 20px;
-    background: linear-gradient(135deg, #0D024C, #6a4ca8); /* Matching gradient */
-    color: #fff; /* White text for contrast */
+.footer { 
     text-align: center;
-    font-family: "Arial", sans-serif;
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for separation */
-}
-
-.footer p {
-    margin: 0;
-    font-size: 1rem;
-    color: #dcdcdc; /* Light gray for subtle contrast */
-}
-
-.footer a {
-    color: #fff; /* White links */
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.footer a:hover {
-    color: #6a4ca8; /* Light purple on hover */
+    margin: auto;
+    max-width: 80%;
+    border-top:1px solid #989898;
+    padding: 15px 0px;
+    font-size: 13px;
 }
