@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import { CoinContext } from "../../contexts/CoinContext";
+import { Link } from "react-router-dom";
 
 interface Coin {
   id: string;
@@ -23,19 +24,27 @@ const Home = () => {
     if (e.target.value === "") {
       setDisplayCoin(allCoin);
     }
-  }
+  };
 
   const searchHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const coins = await allCoin.filter((item) => {
       return item.name.toLowerCase().includes(input.toLowerCase());
-    })
+    });
     setDisplayCoin(coins);
-  }
+  };
 
   useEffect(() => {
     setDisplayCoin(allCoin);
   }, [allCoin]);
+
+  if (!allCoin.length) {
+    return (
+      <div className="spinner">
+        <div className="spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="home">
@@ -49,11 +58,19 @@ const Home = () => {
           explore more about cryptos.
         </p>
         <form onSubmit={searchHandler}>
-
-          <input onChange={inputHandler} list="coinlist" required value={input} type="text" placeholder="Search Crypto.." />
+          <input
+            onChange={inputHandler}
+            list="coinlist"
+            required
+            value={input}
+            type="text"
+            placeholder="Search Crypto.."
+          />
 
           <datalist id="coinlist">
-            {allCoin.map((item, index) => (<option key={index} value={item.name} />))}
+            {allCoin.map((item, index) => (
+              <option key={index} value={item.name} />
+            ))}
           </datalist>
 
           <button type="submit">Search</button>
@@ -68,9 +85,9 @@ const Home = () => {
           <p style={{ textAlign: "center" }}>24H Change</p>
           <p className="market-cap">Market Cap</p>
         </div>
-        {Array.isArray(displayCoin) ?
-          (displayCoin.slice(0, 10).map((item, index) => (
-            <div className="table-layout" key={index}>
+        {Array.isArray(displayCoin) ? (
+          displayCoin.slice(0, 10).map((item, index) => (
+            <Link to={`/coin/${item.id}`} className="table-layout" key={index}>
               <p>{item.market_cap_rank}</p>
               <div>
                 <img src={item.image} alt={item.name} />
@@ -89,8 +106,11 @@ const Home = () => {
               <p className="market-cap">
                 {currency.symbol} {item.market_cap.toLocaleString()}
               </p>
-            </div>
-          ))) : (<p>Loading or failed to load data.</p>)}
+            </Link>
+          ))
+        ) : (
+          <p>Loading or failed to load data.</p>
+        )}
       </div>
     </div>
   );
