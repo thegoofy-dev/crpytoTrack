@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home/Home";
 import Coin from "./pages/Coin/Coin";
 import Footer from './components/Footer/Footer';
-import Features from './components/Features/Features';
+import Features from './pages/Features/Features';
 
 const App = () => {
   return (
