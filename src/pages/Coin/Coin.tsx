@@ -127,6 +127,7 @@ const Coin = () => {
       </div>
       <div className="coin-chart">
         <LineChart historicalData={historicalData} />
+        <p>Data represents the price trend over the last 10 days</p>
       </div>
       <div className="coin-info">
         <ul>

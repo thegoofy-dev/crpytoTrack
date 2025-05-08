@@ -56,11 +56,25 @@
 
 .coin-chart {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
-  height: 250px;
+  max-width: 800px;
+  height: auto;
   margin: auto;
+  padding: 80px 25px 20px;
+  border: 1px solid white;
+  border-radius: 15px; 
+  background-color: linear-gradient(
+    rgba(84, 3, 255, 0.15),
+    rgba(105, 2, 153, 0.15)
+  );
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.coin-chart p{
+  font-size:large;
+  text-align: center;
 }
 
 .coin-info {
@@ -80,5 +94,4 @@
 
 .coin-info ul li:last-child {
   font-weight: 300;
-
 }
