@@ -16,6 +16,22 @@ interface Coin {
 const Home = () => {
   const { allCoin, currency } = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState<Coin[]>([]);
+  const [input, setInput] = useState("");
+
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+    if (e.target.value === "") {
+      setDisplayCoin(allCoin);
+    }
+  }
+
+  const searchHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const coins = await allCoin.filter((item) => {
+      return item.name.toLowerCase().includes(input.toLowerCase());
+    })
+    setDisplayCoin(coins);
+  }
 
   useEffect(() => {
     setDisplayCoin(allCoin);
@@ -32,8 +48,14 @@ const Home = () => {
           Welcome to the world's largest cryptocurrency marketplace. Sign up to
           explore more about cryptos.
         </p>
-        <form>
-          <input type="text" placeholder="Search Crypto.." />
+        <form onSubmit={searchHandler}>
+
+          <input onChange={inputHandler} list="coinlist" required value={input} type="text" placeholder="Search Crypto.." />
+
+          <datalist id="coinlist">
+            {allCoin.map((item, index) => (<option key={index} value={item.name} />))}
+          </datalist>
+
           <button type="submit">Search</button>
         </form>
       </div>
