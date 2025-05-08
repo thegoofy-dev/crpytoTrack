@@ -1,0 +1,59 @@
+.features {
+    padding: 40px 20px;
+    font-family: "Arial", sans-serif;
+    background: linear-gradient(135deg, #0D024C, #6a4ca8); /* Darker purplish gradient */
+    color: #fff; /* Adjust text color for better contrast */
+    min-height: 100vh; /* Ensure the page takes up the full viewport height */
+}
+
+.features-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.features-header h1 {
+    font-size: 3rem;
+    color: #fff; /* White text for better visibility */
+    margin-bottom: 10px;
+}
+
+.features-header p {
+    font-size: 1.2rem;
+    color: #dcdcdc; /* Light gray for contrast */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: #fff; /* Ensure text is visible */
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.feature-item h2 {
+    font-size: 1.8rem;
+    color: #fff; /* White text */
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #dcdcdc; /* Light gray text */
+    line-height: 1.5;
+}
