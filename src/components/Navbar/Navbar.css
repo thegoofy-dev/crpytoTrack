@@ -54,6 +54,10 @@
   cursor: pointer;
 }
 
+.signup:hover {
+  text-decoration: underline;
+}
+
 .nav button img {
   width: 13px;
 }
