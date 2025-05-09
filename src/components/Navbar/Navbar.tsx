@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { CoinContext } from "../../contexts/CoinContext";
 import { Link } from "react-router-dom";
+import { FaHome, FaBell, FaWallet, FaChartLine } from "react-icons/fa";
 
 const Navbar = () => {
   const { setCurrency } = useContext(CoinContext);
@@ -29,19 +30,30 @@ const Navbar = () => {
   };
   return (
     <div className="nav">
-      <Link to={`/`}>
-        <img src={logo} alt="" className="logo" />
+      <Link to={`/`} className="logo">
+        <img src={logo} alt="Crypto Tracker" />
       </Link>
       <ul>
-        <Link to={`/`}>
-          <li>Home</li>
-        </Link>
-        <Link to={`/features`}>
-          <li>Features</li>
-        </Link>
-        <Link to={`/pricing`}>
-          <li>Pricing</li>
-        </Link>
+        <li>
+          <Link to={`/`}>
+            <FaHome /> Home
+          </Link>
+        </li>
+        <li>
+          <Link to={`/features`} className="feature-link">
+            <FaChartLine /> Features
+          </Link>
+        </li>
+        <li>
+          <Link to={`/alerts`} className="feature-link">
+            <FaBell /> Price Alerts
+          </Link>
+        </li>
+        <li>
+          <Link to={`/portfolio`} className="feature-link">
+            <FaWallet /> Portfolio
+          </Link>
+        </li>
       </ul>
       <div className="nav-right">
         <select onChange={currencyHandler}>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import { CoinContext } from "../../contexts/CoinContext";
 import { Link } from "react-router-dom";
+import { cryptoService } from "../../services/cryptoService";
 
 interface Coin {
   id: string;
@@ -18,12 +19,40 @@ const Home = () => {
   const { allCoin, currency } = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState<Coin[]>([]);
   const [input, setInput] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
 
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
-    if (e.target.value === "") {
+  const inputHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInput(value);
+
+    if (value.length >= 2) {
+      setIsSearching(true);
+      try {
+        const results = await cryptoService.searchCoins(value);
+        setSearchResults(results);
+      } catch (error) {
+        console.error('Error searching coins:', error);
+      }
+      setIsSearching(false);
+    } else {
+      setSearchResults([]);
+    }
+
+    if (value === "") {
       setDisplayCoin(allCoin);
     }
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const selectCoin = (coin: any) => {
+    setInput(coin.name);
+    setSearchResults([]);
+    const filteredCoins = allCoin.filter((item) => 
+      item.name.toLowerCase().includes(coin.name.toLowerCase())
+    );
+    setDisplayCoin(filteredCoins);
   };
 
   const searchHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,22 +86,30 @@ const Home = () => {
           Welcome to the world's largest cryptocurrency marketplace. Sign up to
           explore more about cryptos.
         </p>
-        <form onSubmit={searchHandler}>
-          <input
-            onChange={inputHandler}
-            list="coinlist"
-            required
-            value={input}
-            type="text"
-            placeholder="Search Crypto.."
-          />
-
-          <datalist id="coinlist">
-            {allCoin.map((item, index) => (
-              <option key={index} value={item.name} />
-            ))}
-          </datalist>
-
+        <form onSubmit={searchHandler} className="search-form">
+          <div className="search-container">
+            <input
+              onChange={inputHandler}
+              value={input}
+              type="text"
+              placeholder="Search Crypto.."
+              required
+            />
+            {isSearching && <div className="searching">Searching...</div>}
+            {searchResults.length > 0 && (
+              <div className="search-results">
+                {searchResults.map((coin) => (
+                  <div
+                    key={coin.id}
+                    className="search-result-item"
+                    onClick={() => selectCoin(coin)}
+                  >
+                    {coin.symbol.toUpperCase()} - {coin.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <button type="submit">Search</button>
         </form>
       </div>
@@ -93,10 +130,10 @@ const Home = () => {
                 <img src={item.image} alt={item.name} />
                 <p>{`${item.name} - ${item.symbol}`}</p>
               </div>
-              <p>
+              <p >
                 {currency.symbol} {item.current_price.toLocaleString()}
               </p>
-              <p
+              <p style={{textAlign:"center"}}
                 className={
                   item.price_change_percentage_24h > 0 ? "green" : "red"
                 }
