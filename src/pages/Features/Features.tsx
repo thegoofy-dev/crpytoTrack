@@ -1,15 +1,27 @@
 import "./Features.css";
+import PriceConverter from "../../components/PriceConverter/PriceConverter";
 
 const Features = () => {
     return (
         <div className="features">
             <header className="features-header">
-                <h1>Coming Soon Features...</h1>
+                <h1>Features</h1>
                 <p>
                     Discover the powerful tools and features that make CryptoTrack your ultimate
                     cryptocurrency tracking solution.
                 </p>
             </header>
+
+            {/* Live Price Converter Feature */}
+            <div className="feature-section">
+                <h2>Live Cryptocurrency Converter</h2>
+                <p className="feature-description">
+                    Convert between different cryptocurrencies in real-time using our powerful converter.
+                    Get instant price conversions for over 100 cryptocurrencies.
+                </p>
+                <PriceConverter />
+            </div>
+
             <div className="features-list">
                 <div className="feature-item">
                     <h2>Real-Time Tracking</h2>

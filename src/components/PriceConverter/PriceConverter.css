@@ -1,0 +1,125 @@
+.price-converter {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin: 2rem auto;
+    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.price-converter h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #00cec9, #0984e3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.converter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.converter-input {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    align-items: center;
+}
+
+.converter-input input {
+    width: 40%;
+    padding: 1rem 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.converter-input select {
+    width: 60%;
+    padding: 1rem 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.converter-input input:focus {
+    border-color: #00cec9;
+    box-shadow: 0 0 0 3px rgba(0, 206, 201, 0.1);
+    outline: none;
+}
+
+.converter-input select:focus {
+    border-color: #00cec9;
+    box-shadow: 0 0 0 3px rgba(0, 206, 201, 0.1);
+    outline: none;
+}
+
+.converter-input select option {
+    background: #1d152f;
+    color: #fff;
+}
+
+.converter-arrow {
+    text-align: center;
+    font-size: 2rem;
+    color: #00cec9;
+    margin: 0.5rem 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.converter-loading {
+    text-align: center;
+    padding: 2rem;
+    color: #dcdcdc;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+    .converter-input {
+        flex-direction: column;
+    }
+    
+    .price-converter {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .converter-input input,
+    .converter-input select {
+        width: 100%;
+    }
+} 
