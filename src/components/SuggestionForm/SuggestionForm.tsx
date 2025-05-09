@@ -1,29 +1,56 @@
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import './SuggestionForm.css';
 
 const SuggestionForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    suggestion: ''
+    suggestion: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you can add the logic to handle form submission
-    // For example, sending to an API endpoint
-    console.log('Form submitted:', formData);
-    // Reset form after submission
-    setFormData({ name: '', email: '', suggestion: '' });
-    alert('Thank you for your suggestion!');
+    setIsSubmitting(true);
+
+    const { VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY } = import.meta.env;
+
+    try {
+      const response = await emailjs.send(
+        VITE_EMAILJS_SERVICE_ID,
+        VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          suggestion: formData.suggestion,
+        },
+        VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (response.status === 200) {
+        // Use a more user-friendly success message
+        const successMessage = `Thank you ${formData.name}! Your suggestion has been received.`;
+        alert(successMessage);
+        // Reset form
+        setFormData({ name: '', email: '', suggestion: '' });
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      // More detailed error message
+      alert('Unable to send your suggestion. Please check your internet connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -33,7 +60,7 @@ const SuggestionForm = () => {
         <h2>Help Us Improve</h2>
         <p>Your feedback is valuable to us. Share your suggestions to help make CryptoTrack better!</p>
       </div>
-      
+
       <form onSubmit={handleSubmit} className="suggestion-form">
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -74,13 +101,15 @@ const SuggestionForm = () => {
           />
         </div>
 
-        <button type="submit" className="submit-btn">Submit Suggestion</button>
+        <button type="submit" className="submit-btn" disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Submit Suggestion'}
+        </button>
       </form>
 
       <div className="github-link-container">
-        <a 
-          href="https://github.com/thegoofy-dev/crpytoTrack" 
-          target="_blank" 
+        <a
+          href="https://github.com/thegoofy-dev/crpytoTrack"
+          target="_blank"
           rel="noopener noreferrer"
           className="github-link"
         >
@@ -92,4 +121,4 @@ const SuggestionForm = () => {
   );
 };
 
-export default SuggestionForm; 
+export default SuggestionForm;

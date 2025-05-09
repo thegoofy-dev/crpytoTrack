@@ -1,14 +1,14 @@
 .suggestion-container {
   max-width: 600px;
   margin: 2rem auto;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(13, 0, 78, 0.9), rgba(29, 21, 47, 0.9));
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   color: white;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .suggestion-header {
@@ -17,14 +17,18 @@
 }
 
 .suggestion-header h2 {
-  color: white;
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .suggestion-header p {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
 .suggestion-form {
@@ -37,22 +41,25 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  text-align: left;
 }
 
 .form-group label {
-  font-weight: 500;
-  color: white;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
 }
 
 .form-group input,
 .form-group textarea {
-  padding: 0.8rem;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  background: rgba(13, 0, 78, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
+  border-radius: 12px;
   font-size: 1rem;
   color: white;
   transition: all 0.3s ease;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .form-group input::placeholder,
@@ -63,31 +70,42 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #0366d6;
-  background: rgba(255, 255, 255, 0.15);
+  border-color: #2d6ffd;
+  background: rgba(13, 0, 78, 0.5);
+  box-shadow: 0 0 15px rgba(45, 111, 253, 0.3);
 }
 
 .submit-btn {
-  background: linear-gradient(45deg, #0366d6, #0256b3);
+  background: linear-gradient(45deg, #2d6ffd, #1a4fbd);
   color: white;
   padding: 1rem;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: 600;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 5px 15px rgba(45, 111, 253, 0.3);
+  margin-top: 1rem;
 }
 
 .submit-btn:hover {
-  background: linear-gradient(45deg, #0256b3, #0366d6);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(3, 102, 214, 0.3);
+  background: linear-gradient(45deg, #1a4fbd, #2d6ffd);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(45, 111, 253, 0.5);
+}
+
+.submit-btn:disabled {
+  background: linear-gradient(45deg, #454545, #666666);
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
 }
 
 .github-link-container {
-  margin-top: 2rem;
-  text-align: center;
+  margin-top: 2.5rem;
 }
 
 .github-link {
@@ -97,15 +115,16 @@
   text-decoration: none;
   color: white;
   transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  background: rgba(13, 0, 78, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .github-link:hover {
-  color: #0366d6;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  color: #2d6ffd;
+  background: rgba(13, 0, 78, 0.5);
+  transform: translateY(-3px);
 }
 
 .github-icon {
@@ -117,4 +136,18 @@
     margin: 1rem;
     padding: 1.5rem;
   }
-} 
+
+  .suggestion-header h2 {
+    font-size: 2rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
