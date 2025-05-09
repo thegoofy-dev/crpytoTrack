@@ -2,11 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FaPlus, FaTrash, FaWallet } from 'react-icons/fa';
 import { cryptoService } from '../../services/cryptoService';
 import { storageService } from '../../services/storageService';
-import { Portfolio, PortfolioAsset, PortfolioFormData } from '../../types/portfolio';
+import type { Portfolio, PortfolioAsset, PortfolioFormData } from '../../types/portfolio';
 import { CoinContext } from '../../contexts/CoinContext';
 import './Portfolio.css';
 
-const Portfolio: React.FC = () => {
+interface CoinSearchResult {
+  id: string;
+  symbol: string;
+  name: string;
+}
+
+const PortfolioPage: React.FC = () => {
   const { currency } = useContext(CoinContext);
   const [portfolio, setPortfolio] = useState<Portfolio>({
     assets: [],
@@ -20,7 +26,7 @@ const Portfolio: React.FC = () => {
     purchasePrice: 0,
     purchaseDate: new Date()
   });
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<CoinSearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,11 +44,13 @@ const Portfolio: React.FC = () => {
       const updateInterval = setInterval(updatePortfolioValues, 60000);
       return () => clearInterval(updateInterval);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [portfolio.assets]);
 
   // Update portfolio values when currency changes
   useEffect(() => {
     updatePortfolioValues();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
 
   const handleSymbolChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +71,7 @@ const Portfolio: React.FC = () => {
     }
   };
 
-  const selectCoin = (coin: any) => {
+  const selectCoin = (coin: CoinSearchResult) => {
     setFormData({ ...formData, symbol: coin.id });
     setSearchResults([]);
   };
@@ -327,4 +335,4 @@ const Portfolio: React.FC = () => {
   );
 };
 
-export default Portfolio; 
+export default PortfolioPage; 

@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import Features from './pages/Features/Features';
 import Pricing from './pages/Pricing/Pricing';
 import PriceAlerts from './components/PriceAlerts/PriceAlerts';
-import Portfolio from './components/Portfolio/Portfolio';
+import PortfolioPage from './components/Portfolio/Portfolio';
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/features" element={<Features />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/alerts" element={<PriceAlerts />} />
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
       </Routes>
       <Footer />
     </div>

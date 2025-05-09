@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { PriceAlert, AlertFormData, AlertCondition } from '../../types/alert';
+import type { PriceAlert, AlertFormData, AlertCondition } from '../../types/alert';
 import { FaBell, FaTrash } from 'react-icons/fa';
 import { cryptoService } from '../../services/cryptoService';
 import { storageService } from '../../services/storageService';
 import './PriceAlerts.css';
+
+interface CoinSearchResult {
+  id: string;
+  symbol: string;
+  name: string;
+}
 
 const PriceAlerts: React.FC = () => {
   const [alerts, setAlerts] = useState<PriceAlert[]>([]);
@@ -13,7 +19,7 @@ const PriceAlerts: React.FC = () => {
     condition: 'above',
     price: 0,
   });
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<CoinSearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
@@ -24,6 +30,7 @@ const PriceAlerts: React.FC = () => {
     // Set up price checking interval
     const interval = setInterval(checkAlertPrices, 60000); // Check every minute
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSymbolChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +51,7 @@ const PriceAlerts: React.FC = () => {
     }
   };
 
-  const selectCoin = (coin: any) => {
+  const selectCoin = (coin: CoinSearchResult) => {
     setFormData({
       ...formData,
       coinId: coin.id,

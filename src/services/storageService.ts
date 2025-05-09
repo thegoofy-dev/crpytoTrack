@@ -1,5 +1,5 @@
-import { PriceAlert } from '../types/alert';
-import { Portfolio } from '../types/portfolio';
+import type { PriceAlert } from '../types/alert';
+import type { Portfolio, PortfolioAsset } from '../types/portfolio';
 
 const STORAGE_KEYS = {
   ALERTS: 'crypto_tracker_alerts',
@@ -25,7 +25,7 @@ export const storageService = {
     try {
       const portfolio = JSON.parse(data);
       // Convert string dates back to Date objects
-      portfolio.assets = portfolio.assets.map((asset: any) => ({
+      portfolio.assets = portfolio.assets.map((asset: Omit<PortfolioAsset, 'purchaseDate'> & { purchaseDate: string }) => ({
         ...asset,
         purchaseDate: new Date(asset.purchaseDate)
       }));
