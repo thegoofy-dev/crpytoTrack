@@ -7,6 +7,7 @@ import Features from './pages/Features/Features';
 import Pricing from './pages/Pricing/Pricing';
 import PriceAlerts from './components/PriceAlerts/PriceAlerts';
 import PortfolioPage from './components/Portfolio/Portfolio';
+import SuggestionForm from './components/SuggestionForm/SuggestionForm';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/alerts" element={<PriceAlerts />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/suggestions" element={<SuggestionForm />} />
       </Routes>
       <Footer />
     </div>

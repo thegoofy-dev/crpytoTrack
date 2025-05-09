@@ -34,31 +34,46 @@
   color: #3498db;
 }
 
-
-
 .nav-right {
   display: flex;
   align-items: center;
-  gap: max(1vw, 12px);
+  gap: 1rem;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.github-link:hover {
+  color: #0366d6;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
 .nav-right select {
-  padding: 5px 8px;
-  border-radius: 6px;
-  border: 2px solid white;
+  padding: 0.5rem;
+  border-radius: 5px;
   background: transparent;
   color: white;
+  border: 1px solid white;
   cursor: pointer;
-  outline: none;
+}
+
+.nav-right select:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-right select option {
-  background-color: #09005c;
+  background: #1d152f;
   color: white;
-}
-
-.nav-right select:focus {
-  border-color: #3498db;
 }
 
 @media (max-width: 900px) {

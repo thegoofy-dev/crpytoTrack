@@ -1,8 +1,37 @@
-.footer { 
-    text-align: center;
-    margin: auto;
-    max-width: 80%;
-    border-top:1px solid #989898;
-    padding: 15px 0px;
-    font-size: 13px;
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.suggestions-link {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.suggestions-link:hover {
+    color: #0366d6;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }

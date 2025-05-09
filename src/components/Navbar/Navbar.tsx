@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { CoinContext } from "../../contexts/CoinContext";
 import { Link } from "react-router-dom";
-import { FaHome, FaBell, FaWallet, FaChartLine } from "react-icons/fa";
+import { FaHome, FaBell, FaWallet, FaChartLine, FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
   const { setCurrency } = useContext(CoinContext);
@@ -61,6 +61,14 @@ const Navbar = () => {
           <option value="eur">EUR</option>
           <option value="inr">INR</option>
         </select>
+        <a 
+          href="https://github.com/thegoofy-dev/crpytoTrack" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="github-link"
+        >
+          <FaGithub />
+        </a>
       </div>
     </div>
   );
